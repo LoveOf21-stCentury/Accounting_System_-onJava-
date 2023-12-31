@@ -7,7 +7,7 @@ public class Presenter {
     private View view;
     private Service service;
 
-    public Presenter() {
+    public Presenter(View view) {
         this.view = view;
         service = new Service();
     }
