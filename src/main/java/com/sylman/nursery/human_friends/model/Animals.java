@@ -1,6 +1,6 @@
-package com.sylman.nursery.human_friends;
+package com.sylman.nursery.human_friends.model;
 
-public abstract class Animals {
+public class Animals {
     private String name;
     private String skills;
 
@@ -20,10 +20,6 @@ public abstract class Animals {
     public void setName(String name) {
         this.name = name;
     }
-
-    public abstract void printName();
-
-    public abstract void printSkills();
 
 
 }
