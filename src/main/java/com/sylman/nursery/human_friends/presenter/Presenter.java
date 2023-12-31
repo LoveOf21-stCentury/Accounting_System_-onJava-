@@ -20,4 +20,8 @@ public class Presenter {
         service.printSkills();
     }
 
+    public void addNewAnimal(String name, String skills){
+        service.addNewAnimal(name, skills);
+    }
+
 }
