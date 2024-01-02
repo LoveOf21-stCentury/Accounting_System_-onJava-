@@ -13,7 +13,7 @@ public class Menu {
         commandList.add(new AddNewAnimal(consoleUI));
         commandList.add(new PrintName(consoleUI));
         commandList.add(new PrintSkills(consoleUI));
-        commandList.add(new GetAnimalsInfo(consoleUI));
+        commandList.add(new AddNewSkill(consoleUI));
         commandList.add(new Finish(consoleUI));
     }
 

@@ -7,6 +7,7 @@ public class PrintSkills extends Command{
         super(consoleUI);
         descriptions = "Print Skills";
     }
+
     @Override
     public void execute() {
         consoleUI.printSkills();

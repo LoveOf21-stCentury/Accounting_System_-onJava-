@@ -40,14 +40,6 @@ public class ConsoleUI implements View {
         work = false;
     }
 
-    public void printName() {
-        presenter.printName();
-    }
-
-    public void printSkills() {
-        presenter.printSkills();
-    }
-
     public void addNewAnimal() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What name is gonna be");
@@ -58,8 +50,16 @@ public class ConsoleUI implements View {
         presenter.addNewAnimal(name, dateBirth, skills);
     }
 
-    public void getAnimalsInfo() {
-        presenter.getAnimalsInfo();
+    public void printName() {
+        presenter.printName();
+    }
+
+    public void printSkills() {
+        presenter.printSkills();
+    }
+
+    public void addNewSkill() {
+        presenter.addNewSkill();
     }
 
     private boolean checkCommand(int numbCommand) throws MenuOptionException {

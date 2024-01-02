@@ -14,6 +14,13 @@ public class Presenter {
         service = new Service();
     }
 
+//    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
+//        service.addNewAnimal(name, dateBirth, skills);
+//    }
+    public void addNewAnimal() {
+        service.addNewAnimal();
+    }
+
     public void printName() {
         service.printName();
     }
@@ -21,13 +28,7 @@ public class Presenter {
     public void printSkills() {
         service.printSkills();
     }
-
-    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
-        service.addNewAnimal(name, dateBirth, skills);
-    }
-
-    public void getAnimalsInfo() {
-        String answer = service.getAnimalsInfo();
-        view.printAnswer(answer);
+    public void addNewSkill(){
+        service.addNewSkill();
     }
 }

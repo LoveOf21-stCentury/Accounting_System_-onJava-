@@ -1,30 +1,23 @@
-package com.sylman.nursery.human_friends.model;
+package com.sylman.nursery.human_friends.model.pack_animals;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Animals {
-    private long id;
+public abstract class PackAnimal {
     private String name;
     private String skills;
     private LocalDate dateBirth;
     private LocalDate dateDeath;
 
-    public Animals(String name, LocalDate dateBirth, LocalDate dateDeath, String skills) {
-        this.id = 0;
+    public PackAnimal(String name, LocalDate dateBirth, LocalDate dateDeath, String skills) {
         this.name = name;
         this.dateBirth = dateBirth;
         this.dateDeath = dateDeath;
         this.skills = skills;
     }
 
-    public Animals(String name, LocalDate dateBirth, String skills) {
+    public PackAnimal(String name, LocalDate dateBirth, String skills) {
         this(name, dateBirth, null, skills);
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getName() {
@@ -41,10 +34,6 @@ public class Animals {
 
     public String getSkills() {
         return skills;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public void setName(String name) {
@@ -76,25 +65,7 @@ public class Animals {
         return diff.getYears();
     }
 
-    @Override
-    public String toString(){
-        return getInfo();
-    }
+    public abstract void printSkills();
+    public abstract void addNewSkill(String skill);
 
-    public String getInfo() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("id: ");
-        sb.append(id + 1);
-        sb.append(", name: ");
-        sb.append(name);
-        sb.append(", age: ");
-        sb.append(getAge());
-        sb.append(", ");
-        sb.append(", skills: ");
-        sb.append(getSkills());
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    // TODO: 12/31/2023 override toString method
 }
