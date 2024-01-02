@@ -4,6 +4,8 @@ import com.sylman.nursery.human_friends.model.Service;
 import com.sylman.nursery.human_friends.presenter.Presenter;
 import com.sylman.nursery.human_friends.presenter.exceptions.MenuOptionException;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class ConsoleUI implements View {
@@ -50,9 +52,16 @@ public class ConsoleUI implements View {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What name is gonna be");
         String name = scanner.nextLine();
+        System.out.println("Enter date of birth IN FORMAT: DD-MM-YYYY:");
+        String date = scanner.nextLine();
+       LocalDate dateBirth = checkDate(date);
         System.out.println("What skills does he/she has");
         String skills = scanner.nextLine();
-        presenter.addNewAnimal(name, skills);
+        presenter.addNewAnimal(name, dateBirth, skills);
+    }
+
+    public void getAnimalsInfo() {
+        presenter.getAnimalsInfo();
     }
 
     private boolean checkCommand(int numbCommand) throws MenuOptionException {
@@ -62,27 +71,13 @@ public class ConsoleUI implements View {
 //            return true;
 //        }
         try {
-            if (numbCommand > menu.getSize()){
+            if (numbCommand > menu.getSize()) {
                 System.err.println("Please select an option from 1 to 4.");
                 return false;
             }
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new MenuOptionException();
-        }
-    }
-
-    private void printMenu() {
-        System.out.println(menu.showMenu());
-    }
-
-    private void execute() throws MenuOptionException {
-        String line = scanner.nextLine();
-        if (checkTextForInt(line)) {
-            int numbCommand = Integer.parseInt(line);
-            if (checkCommand(numbCommand)) {
-                menu.execute(numbCommand);
-            }
         }
     }
 
@@ -100,6 +95,46 @@ public class ConsoleUI implements View {
             return true;
         } catch (Exception e) {
             throw new MenuOptionException();
+        }
+    }
+
+    public LocalDate checkDate(String date) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        try {
+//            return LocalDate.parse(dateOfBirth, formatter);
+//        } catch (DateTimeParseException e) {
+//            throw new DateException();
+//        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        boolean validInput = false;
+        LocalDate dateBirth = null;
+
+        while (!validInput) {
+            try {
+                System.out.print("Enter date of birth IN FORMAT: DD-MM-YYYY:\n");
+                String input = scanner.nextLine();
+                dateBirth = LocalDate.parse(input, formatter);
+                validInput = true;
+            } catch (Exception e) {
+                System.err.println("Некорректный формат даты. Попробуйте снова.");
+                scanner.nextLine();
+            }
+        }
+        System.out.println("Введенная дата является корректной.");
+        return dateBirth;
+    }
+
+    private void printMenu() {
+        System.out.println(menu.showMenu());
+    }
+
+    private void execute() throws MenuOptionException {
+        String line = scanner.nextLine();
+        if (checkTextForInt(line)) {
+            int numbCommand = Integer.parseInt(line);
+            if (checkCommand(numbCommand)) {
+                menu.execute(numbCommand);
+            }
         }
     }
 
