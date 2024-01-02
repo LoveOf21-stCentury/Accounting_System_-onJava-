@@ -3,22 +3,16 @@ package com.sylman.nursery.human_friends.model;
 public class Service {
     Animals animals;
 
-    //    public Service(){
-//
-//    }
-    public String printName() {
-//        System.out.println("Name is: " + animals.getName());
-        return animals.getName();
+    public void printName() {
+        System.out.println("Name is: " + animals.getName());
     }
 
-    public String printSkills() {
-//        System.out.println("there's skills of " + animals.getName() + ": " +
-//                animals.getSkills());
-        return animals.getSkills();
+    public void printSkills() {
+        System.out.println("there's skills of " + animals.getName() + ": " +
+                animals.getSkills());
     }
-
-    public void addNewAnimal(String name, String skills) {
-        animals = new Animals(name, skills);
+    public void addNewAnimal(String name, String skills){
         System.out.println("Added");
+       animals = new Animals(name, skills);
     }
 }

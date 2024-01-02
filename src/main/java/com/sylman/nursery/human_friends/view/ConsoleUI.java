@@ -40,15 +40,10 @@ public class ConsoleUI implements View {
     }
 
     public void printName() {
-        System.out.print("Name is: ");
         presenter.printName();
-
     }
 
     public void printSkills() {
-        System.out.print("there's skills of ");
-        presenter.printName();
-        System.out.print(": ");
         presenter.printSkills();
     }
 
@@ -75,22 +70,21 @@ public class ConsoleUI implements View {
 
     private void execute() throws MenuOptionException {
         String line = scanner.nextLine();
-        if (checkTextForInt(line)) {
+        if(checkTextForInt(line)){
             int numbCommand = Integer.parseInt(line);
-            if (checkCommand(numbCommand)) {
+            if(checkCommand(numbCommand)){
                 menu.execute(numbCommand);
             }
         }
     }
 
     public boolean checkTextForInt(String text) throws MenuOptionException {
-        if (!text.matches("[0-9]+")) {
+        if (!text.matches("[0-9]+")){
             throw new MenuOptionException("You're input not number");
         } else {
             return true;
         }
     }
-
     @Override
     public void printAnswer(String answer) {
         System.out.println(answer);

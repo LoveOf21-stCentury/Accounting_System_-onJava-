@@ -13,16 +13,14 @@ public class Presenter {
     }
 
     public void printName() {
-        String answer = service.printName();
-        view.printAnswer(answer);
+        service.printName();
     }
 
     public void printSkills() {
-        String skills = service.printSkills();
-        System.out.println(skills);
+        service.printSkills();
     }
 
-    public void addNewAnimal(String name, String skills) {
+    public void addNewAnimal(String name, String skills){
         service.addNewAnimal(name, skills);
     }
 
