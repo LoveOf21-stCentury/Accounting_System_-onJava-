@@ -1,6 +1,5 @@
 package com.sylman.nursery.human_friends.view;
 
-import com.sylman.nursery.human_friends.model.Animals;
 import com.sylman.nursery.human_friends.model.Service;
 import com.sylman.nursery.human_friends.presenter.Presenter;
 import com.sylman.nursery.human_friends.presenter.exceptions.MenuOptionException;
@@ -57,10 +56,19 @@ public class ConsoleUI implements View {
     }
 
     private boolean checkCommand(int numbCommand) throws MenuOptionException {
-        if (numbCommand > menu.getSize()) {
-            throw new MenuOptionException("Wrong input");
-        } else {
+//        if (numbCommand > menu.getSize()) {
+//            throw new MenuOptionException("Wrong input");
+//        } else {
+//            return true;
+//        }
+        try {
+            if (numbCommand > menu.getSize()){
+                System.err.println("Please select an option from 1 to 4.");
+                return false;
+            }
             return true;
+        } catch (Exception e){
+            throw new MenuOptionException();
         }
     }
 
@@ -70,21 +78,31 @@ public class ConsoleUI implements View {
 
     private void execute() throws MenuOptionException {
         String line = scanner.nextLine();
-        if(checkTextForInt(line)){
+        if (checkTextForInt(line)) {
             int numbCommand = Integer.parseInt(line);
-            if(checkCommand(numbCommand)){
+            if (checkCommand(numbCommand)) {
                 menu.execute(numbCommand);
             }
         }
     }
 
     public boolean checkTextForInt(String text) throws MenuOptionException {
-        if (!text.matches("[0-9]+")){
-            throw new MenuOptionException("You're input not number");
-        } else {
+//        if (!text.matches("[0-9]+")){
+//            throw new MenuOptionException("You're input not number");
+//        } else {
+//            return true;
+//        }
+        try {
+            if (!text.matches("[0-9]+")) {
+                System.err.println("Please enter integer number.");
+                return false;
+            }
             return true;
+        } catch (Exception e) {
+            throw new MenuOptionException();
         }
     }
+
     @Override
     public void printAnswer(String answer) {
         System.out.println(answer);

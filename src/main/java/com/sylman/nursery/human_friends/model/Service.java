@@ -12,7 +12,6 @@ public class Service {
                 animals.getSkills());
     }
     public void addNewAnimal(String name, String skills){
-        System.out.println("Added");
        animals = new Animals(name, skills);
     }
 }
