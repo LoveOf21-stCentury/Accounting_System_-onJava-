@@ -52,9 +52,7 @@ public class ConsoleUI implements View {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What name is gonna be");
         String name = scanner.nextLine();
-        System.out.println("Enter date of birth IN FORMAT: DD-MM-YYYY:");
-        String date = scanner.nextLine();
-       LocalDate dateBirth = checkDate(date);
+        LocalDate dateBirth = checkDate();
         System.out.println("What skills does he/she has");
         String skills = scanner.nextLine();
         presenter.addNewAnimal(name, dateBirth, skills);
@@ -72,7 +70,7 @@ public class ConsoleUI implements View {
 //        }
         try {
             if (numbCommand > menu.getSize()) {
-                System.err.println("Please select an option from 1 to 4.");
+                System.err.println("Please select an option from 1 to " + menu.getSize() + ".");
                 return false;
             }
             return true;
@@ -98,7 +96,7 @@ public class ConsoleUI implements View {
         }
     }
 
-    public LocalDate checkDate(String date) {
+    public LocalDate checkDate() {
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 //        try {
 //            return LocalDate.parse(dateOfBirth, formatter);
@@ -116,11 +114,10 @@ public class ConsoleUI implements View {
                 dateBirth = LocalDate.parse(input, formatter);
                 validInput = true;
             } catch (Exception e) {
-                System.err.println("Некорректный формат даты. Попробуйте снова.");
+                System.err.println("Incorrect format of date. Try again.");
                 scanner.nextLine();
             }
         }
-        System.out.println("Введенная дата является корректной.");
         return dateBirth;
     }
 

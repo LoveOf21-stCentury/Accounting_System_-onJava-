@@ -22,11 +22,12 @@ public class Presenter {
         service.printSkills();
     }
 
-    public void addNewAnimal(String name, LocalDate dateBirth, String skills){
+    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
         service.addNewAnimal(name, dateBirth, skills);
     }
 
-    public void getAnimalsInfo(){
-        service.getAnimalsInfo();
+    public void getAnimalsInfo() {
+        String answer = service.getAnimalsInfo();
+        view.printAnswer(answer);
     }
 }

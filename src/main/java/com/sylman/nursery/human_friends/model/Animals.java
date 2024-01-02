@@ -12,7 +12,7 @@ public class Animals {
     private LocalDate dateDeath;
 
     public Animals(String name, LocalDate dateBirth, LocalDate dateDeath, String skills) {
-        this.id = 1;
+        this.id = 0;
         this.name = name;
         this.dateBirth = dateBirth;
         this.dateDeath = dateDeath;
@@ -90,7 +90,9 @@ public class Animals {
         sb.append(", age: ");
         sb.append(getAge());
         sb.append(", ");
+        sb.append(", skills: ");
         sb.append(getSkills());
+        sb.append("\n");
         return sb.toString();
     }
 
