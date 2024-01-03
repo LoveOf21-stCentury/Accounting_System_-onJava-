@@ -40,14 +40,8 @@ public class ConsoleUI implements View {
         work = false;
     }
 
-    public void addNewAnimal() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What name is gonna be");
-        String name = scanner.nextLine();
-        LocalDate dateBirth = checkDate();
-        System.out.println("What skills does he/she has");
-        String skills = scanner.nextLine();
-        presenter.addNewAnimal(name, dateBirth, skills);
+    public void addAnimal() throws MenuOptionException {
+        presenter.addNewAnimal();
     }
 
     public void printName() {
@@ -94,31 +88,6 @@ public class ConsoleUI implements View {
         } catch (Exception e) {
             throw new MenuOptionException();
         }
-    }
-
-    public LocalDate checkDate() {
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-//        try {
-//            return LocalDate.parse(dateOfBirth, formatter);
-//        } catch (DateTimeParseException e) {
-//            throw new DateException();
-//        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        boolean validInput = false;
-        LocalDate dateBirth = null;
-
-        while (!validInput) {
-            try {
-                System.out.print("Enter date of birth IN FORMAT: DD-MM-YYYY:\n");
-                String input = scanner.nextLine();
-                dateBirth = LocalDate.parse(input, formatter);
-                validInput = true;
-            } catch (Exception e) {
-                System.err.println("Incorrect format of date. Try again.");
-                scanner.nextLine();
-            }
-        }
-        return dateBirth;
     }
 
     private void printMenu() {

@@ -1,5 +1,6 @@
 package com.sylman.nursery.human_friends.view.commands;
 
+import com.sylman.nursery.human_friends.presenter.exceptions.MenuOptionException;
 import com.sylman.nursery.human_friends.view.ConsoleUI;
 
 public class AddNewAnimal extends Command {
@@ -10,7 +11,7 @@ public class AddNewAnimal extends Command {
     }
 
     @Override
-    public void execute() {
-        consoleUI.addNewAnimal();
+    public void execute() throws MenuOptionException {
+        consoleUI.addAnimal();
     }
 }

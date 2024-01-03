@@ -14,7 +14,7 @@ public class Presenter {
         service = new Service();
     }
 
-//    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
+    //    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
 //        service.addNewAnimal(name, dateBirth, skills);
 //    }
     public void addNewAnimal() {
@@ -28,7 +28,8 @@ public class Presenter {
     public void printSkills() {
         service.printSkills();
     }
-    public void addNewSkill(){
+
+    public void addNewSkill() {
         service.addNewSkill();
     }
 }

@@ -1,10 +1,8 @@
-package com.sylman.nursery.human_friends.model.pack_animals;
+package com.sylman.nursery.human_friends.model.animals;
 
-import java.time.LocalDate;
-
-public class Horse extends PackAnimal{
-    public Horse(String name, LocalDate dateBirth, String skills) {
-        super(name, dateBirth, skills);
+public class Horse extends Animals {
+    public Horse(String name, String skills) {
+        super(name, skills);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.sylman.nursery.human_friends.view.commands;
 
+import com.sylman.nursery.human_friends.presenter.exceptions.MenuOptionException;
 import com.sylman.nursery.human_friends.view.ConsoleUI;
 
 public abstract class Command {
@@ -13,6 +14,6 @@ public abstract class Command {
         return descriptions;
     }
 
-    public abstract void execute();
+    public abstract void execute() throws MenuOptionException;
 
 }

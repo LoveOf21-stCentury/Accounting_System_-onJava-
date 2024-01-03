@@ -1,5 +1,6 @@
 package com.sylman.nursery.human_friends.view;
 
+import com.sylman.nursery.human_friends.presenter.exceptions.MenuOptionException;
 import com.sylman.nursery.human_friends.view.commands.*;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Menu {
         return sb.toString();
     }
 
-    public void execute(int user) {
+    public void execute(int user) throws MenuOptionException {
         Command command = commandList.get(user - 1);
         command.execute();
     }

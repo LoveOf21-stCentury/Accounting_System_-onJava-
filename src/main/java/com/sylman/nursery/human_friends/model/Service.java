@@ -4,34 +4,47 @@ import com.sylman.nursery.human_friends.model.animals.Animals;
 import com.sylman.nursery.human_friends.model.animals.Cat;
 import com.sylman.nursery.human_friends.model.animals.Dog;
 import com.sylman.nursery.human_friends.model.animals.Hamster;
-import com.sylman.nursery.human_friends.model.pack_animals.Camel;
-import com.sylman.nursery.human_friends.model.pack_animals.Donkey;
-import com.sylman.nursery.human_friends.model.pack_animals.Horse;
-import com.sylman.nursery.human_friends.model.pack_animals.PackAnimal;
+import com.sylman.nursery.human_friends.model.animals.Camel;
+import com.sylman.nursery.human_friends.model.animals.Donkey;
+import com.sylman.nursery.human_friends.model.animals.Horse;
+import com.sylman.nursery.human_friends.presenter.Presenter;
+import com.sylman.nursery.human_friends.view.Menu;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Service {
-    private List<Animals> animalList = new ArrayList<>();
-    public long id;
     public Animals animals;
-    public PackAnimal packAnimal;
+    Scanner scanner;
 
-    //    public void addNewAnimal(String name, LocalDate dateBirth, String skills) {
-//        animals = new Animals(name, dateBirth, skills);
-//        id++;
-//    }
-    public void addNewAnimal(int userAnswer, String name, LocalDate dateBirth, String skills) {
-        switch (userAnswer) {
-            case 1 -> animals = new Cat(name, dateBirth, skills);
-            case 2 -> animals = new Dog(name, dateBirth, skills);
-            case 3 -> animals = new Hamster(name, dateBirth, skills);
-            case 4 -> packAnimal = new Camel(name, dateBirth, skills);
-            case 5 -> packAnimal = new Donkey(name, dateBirth, skills);
-            case 6 -> packAnimal = new Horse(name, dateBirth, skills);
+    public Service() {
+        scanner = new Scanner(System.in);
+    }
+
+    public void addNewAnimal() {
+        System.out.println("What name is gonna be");
+        String name = scanner.nextLine();
+        System.out.println("What skills does he/she has");
+        String skills = scanner.nextLine();
+
+        System.out.println("Select the class: ");
+        System.out.println("1. Cat");
+        System.out.println("2. Dog");
+        System.out.println("3. Hamster");
+        System.out.println("4. Camel");
+        System.out.println("5. Donkey");
+        System.out.println("6. Horse");
+        int user = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (user) {
+            case 1 -> animals = new Cat(name, skills);
+            case 2 -> animals = new Dog(name, skills);
+            case 3 -> animals = new Hamster(name, skills);
+            case 4 -> animals = new Camel(name, skills);
+            case 5 -> animals = new Donkey(name, skills);
+            case 6 -> animals = new Horse(name, skills);
             default -> {
                 System.out.println("Wrong input");
             }
@@ -42,7 +55,7 @@ public class Service {
         System.out.println("Name is: " + animals.getName());
     }
 
-//    public void printSkills() {
+    public void printSkills() {
 //        System.out.println("Enter the name of whose skills need to be printed");
 //        Scanner scanner = new Scanner(System.in);
 //        String name = scanner.nextLine();
@@ -52,7 +65,10 @@ public class Service {
 //                        animals.getSkills());
 //            }
 //        }
-//    }
+        System.out.println("Enter the name of whose skills need to be printed");
+        String name = scanner.nextLine();
+        // TODO: 1/3/2024 method for printing. maybe in database
+    }
 
     public void addNewSkill() {
         System.out.println("Type new skill: ");

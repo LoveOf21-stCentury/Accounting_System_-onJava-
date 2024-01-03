@@ -3,8 +3,8 @@ package com.sylman.nursery.human_friends.model.animals;
 import java.time.LocalDate;
 
 public class Dog extends Animals {
-    public Dog(String name, LocalDate dateBirth, String skills) {
-        super(name, dateBirth, skills);
+    public Dog(String name, String skills) {
+        super(name, skills);
     }
 
     @Override
