@@ -1,7 +1,5 @@
 package com.sylman.nursery.human_friends.model.animals;
 
-import java.time.LocalDate;
-
 public class Hamster extends Animals{
     public Hamster(String name, String skills) {
         super(name, skills);

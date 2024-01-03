@@ -1,17 +1,7 @@
 package com.sylman.nursery.human_friends.model;
 
-import com.sylman.nursery.human_friends.model.animals.Animals;
-import com.sylman.nursery.human_friends.model.animals.Cat;
-import com.sylman.nursery.human_friends.model.animals.Dog;
-import com.sylman.nursery.human_friends.model.animals.Hamster;
-import com.sylman.nursery.human_friends.model.animals.Camel;
-import com.sylman.nursery.human_friends.model.animals.Donkey;
-import com.sylman.nursery.human_friends.model.animals.Horse;
-import com.sylman.nursery.human_friends.presenter.Presenter;
-import com.sylman.nursery.human_friends.view.Menu;
+import com.sylman.nursery.human_friends.model.animals.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Service {
@@ -56,15 +46,6 @@ public class Service {
     }
 
     public void printSkills() {
-//        System.out.println("Enter the name of whose skills need to be printed");
-//        Scanner scanner = new Scanner(System.in);
-//        String name = scanner.nextLine();
-//        for (Animals animal : animalList) {
-//            if (animal.getName().equals(name)) {
-//                System.out.println("Here's skills of " + animals.getName() + ": " +
-//                        animals.getSkills());
-//            }
-//        }
         System.out.println("Enter the name of whose skills need to be printed");
         String name = scanner.nextLine();
         // TODO: 1/3/2024 method for printing. maybe in database

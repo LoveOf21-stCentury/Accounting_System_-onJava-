@@ -1,7 +1,5 @@
 package com.sylman.nursery.human_friends.model.animals;
 
-import java.time.LocalDate;
-
 public class Dog extends Animals {
     public Dog(String name, String skills) {
         super(name, skills);

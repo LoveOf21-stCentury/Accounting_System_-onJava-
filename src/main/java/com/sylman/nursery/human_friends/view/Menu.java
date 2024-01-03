@@ -34,7 +34,7 @@ public class Menu {
         command.execute();
     }
 
-    public int getSize(){
+    public int getSize() {
         return commandList.size();
     }
 }
