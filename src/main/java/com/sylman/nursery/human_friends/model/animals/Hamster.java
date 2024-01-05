@@ -1,8 +1,10 @@
 package com.sylman.nursery.human_friends.model.animals;
 
-public class Hamster extends Animals{
-    public Hamster(String name, String skills) {
-        super(name, skills);
+import java.time.LocalDate;
+
+public class Hamster extends Animals {
+    public Hamster(String name, LocalDate dateBirth, String skills) {
+        super(name, dateBirth, skills);
     }
 
     @Override

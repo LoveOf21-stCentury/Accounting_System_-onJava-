@@ -2,6 +2,8 @@ package com.sylman.nursery.human_friends.model;
 
 import com.sylman.nursery.human_friends.model.animals.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Service {
@@ -15,6 +17,9 @@ public class Service {
     public void addNewAnimal() {
         System.out.println("What name is gonna be");
         String name = scanner.nextLine();
+
+        LocalDate dateBirth = checkDate();
+
         System.out.println("What skills does he/she has");
         String skills = scanner.nextLine();
 
@@ -29,16 +34,20 @@ public class Service {
         scanner.nextLine();
 
         switch (user) {
-            case 1 -> animals = new Cat(name, skills);
-            case 2 -> animals = new Dog(name, skills);
-            case 3 -> animals = new Hamster(name, skills);
-            case 4 -> animals = new Camel(name, skills);
-            case 5 -> animals = new Donkey(name, skills);
-            case 6 -> animals = new Horse(name, skills);
+            case 1 -> animals = new Cat(name, dateBirth, skills);
+            case 2 -> animals = new Dog(name, dateBirth, skills);
+            case 3 -> animals = new Hamster(name, dateBirth, skills);
+            case 4 -> animals = new Camel(name, dateBirth, skills);
+            case 5 -> animals = new Donkey(name, dateBirth, skills);
+            case 6 -> animals = new Horse(name, dateBirth, skills);
             default -> {
                 System.out.println("Wrong input");
             }
         }
+
+        animals.setName(name);
+        animals.setDateBirth(dateBirth);
+        animals.setSkills(skills);
     }
 
     public void printName() {
@@ -56,5 +65,30 @@ public class Service {
         Scanner scanner = new Scanner(System.in);
         String newSkill = scanner.nextLine();
         animals.setSkills(newSkill);
+    }
+
+    public LocalDate checkDate() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//        try {
+//            return LocalDate.parse(dateOfBirth, formatter);
+//        } catch (DateTimeParseException e) {
+//            throw new DateException();
+//        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        boolean validInput = false;
+        LocalDate dateBirth = null;
+
+        while (!validInput) {
+            try {
+                System.out.print("Enter date of birth IN FORMAT: DD-MM-YYYY:\n");
+                String input = scanner.nextLine();
+                dateBirth = LocalDate.parse(input, formatter);
+                validInput = true;
+            } catch (Exception e) {
+                System.err.println("Incorrect format of date. Try again.");
+                scanner.nextLine();
+            }
+        }
+        return dateBirth;
     }
 }
