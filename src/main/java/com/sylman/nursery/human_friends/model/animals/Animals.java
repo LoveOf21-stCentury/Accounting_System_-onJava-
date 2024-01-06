@@ -7,6 +7,7 @@ public abstract class Animals {
     private String name;
     private String skills;
     private LocalDate dateBirth;
+    private long id;
 
     public Animals(String name, LocalDate dateBirth, String skills) {
         this.name = name;
@@ -35,6 +36,10 @@ public abstract class Animals {
         return diff.getDays();
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -45,6 +50,10 @@ public abstract class Animals {
 
     public void setSkills(String skills) {
         this.skills = skills;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public abstract void printSkills();

@@ -14,7 +14,7 @@ public class Service {
         scanner = new Scanner(System.in);
     }
 
-    public void addNewAnimal() {
+    public Animals addNewAnimal() {
         System.out.println("What name is gonna be");
         String name = scanner.nextLine();
 
@@ -48,6 +48,7 @@ public class Service {
         animals.setName(name);
         animals.setDateBirth(dateBirth);
         animals.setSkills(skills);
+        return animals;
     }
 
     public void printName() {
@@ -74,13 +75,13 @@ public class Service {
 //        } catch (DateTimeParseException e) {
 //            throw new DateException();
 //        }
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         boolean validInput = false;
         LocalDate dateBirth = null;
 
         while (!validInput) {
             try {
-                System.out.print("Enter date of birth IN FORMAT: DD-MM-YYYY:\n");
+                System.out.print("Enter date of birth IN FORMAT: YYYY-MM-DD:\n");
                 String input = scanner.nextLine();
                 dateBirth = LocalDate.parse(input, formatter);
                 validInput = true;
