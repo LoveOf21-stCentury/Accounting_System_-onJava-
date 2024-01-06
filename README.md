@@ -1,5 +1,5 @@
 ﻿# Accounting_System_(onJava) based on nursery of animals.
-Diagram of classes Animals:
+Diagram of classes Animals (watch on code mode):
 +---------------------+
 |   Животное          |
 +---------------------+
