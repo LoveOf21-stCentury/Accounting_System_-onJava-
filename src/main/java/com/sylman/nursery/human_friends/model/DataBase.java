@@ -102,7 +102,7 @@ public class DataBase {
 //    }
 
     private void insertAnimalIntoDB(Animals animal) {
-        String sql = "INSERT INTO nursery (name, age, skills) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO nursery (name, dateBirth, skills) VALUES (?, ?, ?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, animal.getName());
