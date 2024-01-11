@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class DataBase {
 
     //    For educational purposes, we will leave these data as CONSTANTS here.
-    //    In a real project, this data would be stored in a separate external file
+    //    In a real project, this data would be stored in a separate external file.
     private static final String URL = "jdbc:mysql://localhost:3306/nurserydb";
 
     private static final String USERNAME = "root";
@@ -66,7 +66,6 @@ public class DataBase {
             case 6:
                 animal = new Horse(name, dateBirth, skills);
                 break;
-
             default:
                 System.out.println("Invalid option selected.");
                 return null;
@@ -77,14 +76,14 @@ public class DataBase {
         return animal;
     }
 
-
     private void insertAnimalIntoDB(Animals animal) {
-        String sql = "INSERT INTO nursery (name, dateBirth, skills) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO nursery (type, name, dateBirth, skills) VALUES (?, ?, ?, ?)";
         try (Connection connection = this.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, animal.getName());
-            preparedStatement.setDate(2, java.sql.Date.valueOf(animal.getDateBirth()));
-            preparedStatement.setString(3, animal.getSkills());
+            preparedStatement.setString(1, animal.getClass().getSimpleName());
+            preparedStatement.setString(2, animal.getName());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(animal.getDateBirth()));
+            preparedStatement.setString(4, animal.getSkills());
             preparedStatement.executeUpdate();
             System.out.println("Animal added to database successfully.");
         } catch (SQLException e) {
@@ -105,5 +104,27 @@ public class DataBase {
             }
         }
         return dateBirth;
+    }
+
+    public void print(Animals animals) {
+        String sql = "SELECT * FROM nursery";
+        try (Connection connection = this.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            while (resultSet.next()) {
+                String type = resultSet.getString("type");
+                String name = resultSet.getString("name");
+                Date dateBirth = resultSet.getDate("dateBirth");
+                String skills = resultSet.getString("skills");
+
+                System.out.println("Type: " + type);
+                System.out.println("Name: " + name);
+                System.out.println("Date of birth: " + dateBirth);
+                System.out.println("Skills: " + skills);
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

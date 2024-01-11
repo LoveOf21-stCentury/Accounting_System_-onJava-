@@ -21,7 +21,8 @@ public class Service {
     }
 
     public void printName() {
-        System.out.println("Name is: " + animals.getName());
+        dataBase = new DataBase();
+        dataBase.print(animals);
     }
 
     public void printSkills() {
