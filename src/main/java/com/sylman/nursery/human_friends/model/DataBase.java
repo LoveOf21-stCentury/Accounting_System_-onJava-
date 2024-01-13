@@ -139,5 +139,18 @@ public class DataBase {
             e.printStackTrace();
         }
     }
+
+    public void addNewSkill(String animalName, String newSkills) {
+        String sql = "UPDATE nursery SET skills = CONCAT(skills, ', ', ?) WHERE name = ?";
+        try (Connection connection = this.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, newSkills);
+            preparedStatement.setString(2, animalName);
+            preparedStatement.executeUpdate();
+            System.out.println("Successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

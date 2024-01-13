@@ -11,17 +11,16 @@ public class Service {
 
     public Service() {
         scanner = new Scanner(System.in);
+        dataBase = new DataBase();
     }
 
     public Animals addNewAnimal() {
-        dataBase = new DataBase();
         dataBase.addNewAnimal();
 
         return dataBase.addNewAnimal();
     }
 
     public void printTable() {
-        dataBase = new DataBase();
         dataBase.print();
     }
 
@@ -32,9 +31,15 @@ public class Service {
     }
 
     public void addNewSkill() {
-        System.out.println("Type new skill: ");
-        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Type new skill: ");
+//        Scanner scanner = new Scanner(System.in);
+//        String newSkill = scanner.nextLine();
+//        animals.setSkills(newSkill);
+        // TODO: 1/13/2024 clear
+        System.out.println("Type name ");
+        String name = scanner.nextLine();
+        System.out.println("Type new skills: ");
         String newSkill = scanner.nextLine();
-        animals.setSkills(newSkill);
+        dataBase.addNewSkill(name, newSkill);
     }
 }
