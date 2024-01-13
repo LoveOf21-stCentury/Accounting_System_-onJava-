@@ -16,8 +16,8 @@ public class Presenter {
         service.addNewAnimal();
     }
 
-    public void printName() {
-        service.printName();
+    public void printTable() {
+        service.printTable();
     }
 
     public void printSkills() {

@@ -2,14 +2,14 @@ package com.sylman.nursery.human_friends.view.commands;
 
 import com.sylman.nursery.human_friends.view.ConsoleUI;
 
-public class PrintName extends Command{
+public class PrintTable extends Command{
 
-    public PrintName(ConsoleUI consoleUI){
+    public PrintTable(ConsoleUI consoleUI){
         super(consoleUI);
-        descriptions = "Print name of animal";
+        descriptions = "Recording full table in .txt file";
     }
     @Override
     public void execute() {
-        consoleUI.printName();
+        consoleUI.printTable();
     }
 }

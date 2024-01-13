@@ -12,7 +12,7 @@ public class Menu {
     public Menu(ConsoleUI consoleUI) {
         commandList = new ArrayList();
         commandList.add(new AddNewAnimal(consoleUI));
-        commandList.add(new PrintName(consoleUI));
+        commandList.add(new PrintTable(consoleUI));
         commandList.add(new PrintSkills(consoleUI));
         commandList.add(new AddNewSkill(consoleUI));
         commandList.add(new Finish(consoleUI));

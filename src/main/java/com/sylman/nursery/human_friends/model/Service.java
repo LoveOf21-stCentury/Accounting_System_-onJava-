@@ -20,9 +20,9 @@ public class Service {
         return dataBase.addNewAnimal();
     }
 
-    public void printName() {
+    public void printTable() {
         dataBase = new DataBase();
-        dataBase.print(animals);
+        dataBase.print();
     }
 
     public void printSkills() {

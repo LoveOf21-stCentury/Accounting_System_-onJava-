@@ -42,8 +42,8 @@ public class ConsoleUI implements View {
         presenter.addNewAnimal();
     }
 
-    public void printName() {
-        presenter.printName();
+    public void printTable() {
+        presenter.printTable();
     }
 
     public void printSkills() {

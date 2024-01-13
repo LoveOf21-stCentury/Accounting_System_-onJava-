@@ -2,6 +2,10 @@ package com.sylman.nursery.human_friends.model;
 
 import com.sylman.nursery.human_friends.model.animals.*;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +30,13 @@ public class DataBase {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 
+    private boolean isAdded = false;
+
     public Animals addNewAnimal() {
+        if (isAdded) {
+            System.out.println("Added");
+            return null;
+        }
         System.out.println("Enter the name of the animal:");
         String name = scanner.nextLine();
 
@@ -72,7 +82,7 @@ public class DataBase {
         }
 
         insertAnimalIntoDB(animal);
-
+        isAdded = true;
         return animal;
     }
 
@@ -106,9 +116,10 @@ public class DataBase {
         return dateBirth;
     }
 
-    public void print(Animals animals) {
+    public void print() {
         String sql = "SELECT * FROM nursery";
         try (Connection connection = this.connect();
+             BufferedWriter writer = Files.newBufferedWriter(Paths.get("nursery.txt"));
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery(sql);
             while (resultSet.next()) {
@@ -117,14 +128,16 @@ public class DataBase {
                 Date dateBirth = resultSet.getDate("dateBirth");
                 String skills = resultSet.getString("skills");
 
-                System.out.println("Type: " + type);
-                System.out.println("Name: " + name);
-                System.out.println("Date of birth: " + dateBirth);
-                System.out.println("Skills: " + skills);
-                System.out.println();
+                writer.write("Type: " + type + "\n");
+                writer.write("Name: " + name + "\n");
+                writer.write("Date of birth: " + dateBirth + "\n");
+                writer.write("Skills: " + skills + "\n\n");
             }
-        } catch (SQLException e) {
+            System.out.println("Successfully recorded. " +
+                    "The file will be created after finishing work in the console menu.");
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 }
+
