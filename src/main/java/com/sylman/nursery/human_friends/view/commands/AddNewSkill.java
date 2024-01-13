@@ -5,7 +5,7 @@ import com.sylman.nursery.human_friends.view.ConsoleUI;
 public class AddNewSkill extends Command {
     public AddNewSkill(ConsoleUI consoleUI) {
         super(consoleUI);
-        descriptions = "Teach new skill";
+        descriptions = "Teaching new skill";
     }
 
     @Override

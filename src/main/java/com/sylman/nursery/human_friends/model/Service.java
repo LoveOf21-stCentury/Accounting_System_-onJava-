@@ -21,12 +21,13 @@ public class Service {
     }
 
     public void printTable() {
-        dataBase.print();
+        dataBase.printFullTable();
     }
 
     public void printSkills() {
         System.out.println("Enter the name of whose skills need to be printed");
         String name = scanner.nextLine();
+        dataBase.printSkills(name);
         // TODO: 1/3/2024 method for printing. maybe in database
     }
 

@@ -2,7 +2,9 @@ package com.sylman.nursery.human_friends.model;
 
 import com.sylman.nursery.human_friends.model.animals.*;
 
+import java.awt.image.BufferedImageFilter;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -116,7 +118,7 @@ public class DataBase {
         return dateBirth;
     }
 
-    public void print() {
+    public void printFullTable() {
         String sql = "SELECT * FROM nursery";
         try (Connection connection = this.connect();
              BufferedWriter writer = Files.newBufferedWriter(Paths.get("nursery.txt"));
@@ -148,6 +150,27 @@ public class DataBase {
             preparedStatement.setString(2, animalName);
             preparedStatement.executeUpdate();
             System.out.println("Successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void printSkills(String animalName) {
+        String sql = "SELECT skills FROM nursery WHERE name = ?";
+        try (Connection connection = this.connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, animalName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("skills.txt"))) {
+                while (resultSet.next()) {
+                    String skills = resultSet.getString("skills");
+                    writer.write("Skills of: " + animalName + " is: " + skills + "\n");
+                }
+                System.out.println("Successfully recorded." +
+                        "The file will be created after finishing work in the menu.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
